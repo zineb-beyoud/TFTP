@@ -1,0 +1,55 @@
+# depslib dependency file v1.0
+1606125851 source:c:\users\zineb\documents\tp2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"tftp_server.h"
+
+1606859956 c:\users\zineb\documents\tp2\tftp_server.h
+	<winsock2.h>
+
+1606997798 source:c:\users\zineb\documents\tp2\tftp_server.c
+	<stdio.h>
+	<stdlib.h>
+	"tftp_server.h"
+	<winsock2.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<unistd.h>
+	"string.h"
+
+1606125852 source:e:\tp 2020_2021\tp reseaux 20-21\tp2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"tftp_server.h"
+
+1607037312 e:\tp 2020_2021\tp reseaux 20-21\tp2\tftp_server.h
+	<winsock2.h>
+
+1607043496 source:e:\tp 2020_2021\tp reseaux 20-21\tp2\tftp_server.c
+	<stdio.h>
+	<stdlib.h>
+	"tftp_server.h"
+	<winsock2.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<unistd.h>
+	"string.h"
+
+1607078149 source:c:\users\zineb\documents\github\tpreseautftp\main.c
+	<stdio.h>
+	<stdlib.h>
+	"tftp_server.h"
+
+1607071384 c:\users\zineb\documents\github\tpreseautftp\tftp_server.h
+	<winsock2.h>
+
+1607079982 source:c:\users\zineb\documents\github\tpreseautftp\tftp_server.c
+	<stdio.h>
+	<stdlib.h>
+	"tftp_server.h"
+	<winsock2.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<unistd.h>
+	"string.h"
+

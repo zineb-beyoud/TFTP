@@ -1,0 +1,30 @@
+Introduction
+Vous allez développer un serveur TFTP (Trivial File Transfer Protocol). Dans un premier temps, le serveur transférera le fichier en supposant qu'il n'y a pas d'erreur de transmission ou coté client. Le serveur ne traitera que les requêtes de lecture sur des fichiers qui seront transmis uniquement au format "octet". Dans un premier temps, toute autre requête sera ignorée.
+
+Pour tester votre programme, vous devrez créer ou copier un fichier quelconque dans le dossier de l'exécutable de votre serveur (sous dossiers "bin" du projet de développement). Dans un premier temps, vous utiliserez un fichier de moins de 512 octets (voir plus bas). Ensuite vous programmerez votre serveur pour transférer des fichiers plus grand mais serez peut-être encore limité en taille. Le système de numérotation des blocs de TFTP limite la taille des fichiers à 32 Mo (512*2^16 octets) et certains clients ne permettent pas de transférer des fichiers de plus de 64 ko.
+
+Préparation du projet
+Démarrez un nouveau projet d'application console en langage C. Téléchargez le fichier d'entête « tftp_server.h » puis importez le dans votre projet. Créez le fichier source « tftp_server.c ». Le fichier d’en-tête « tftp_server.h » contient les prototypes des fonctions publiques utilisée pour faire fonctionner le serveur TFTP, vous pourrez créer des fonctions privées dans le fichier source pour organiser votre code.
+
+Fonctionnement du serveur
+Démarrage du serveur
+Programmez l'initialisation du serveur dans « tftp_server_init() » qui crée le socket et démarre le serveur en l'associant au port « bien connu » TFTP n°69.
+
+Dans « tftp_server_run() », programmez l'attente d'une requête et la récupération des données transportées ainsi que des coordonnées du client. Dans un premier temps, votre programme doit juste vérifier que la requête est valide sans la traiter. Dans cette partie du TP, si la requête n'est pas valide, le serveur se contente de l'ignorer sans répondre.
+
+Vérifiez que votre serveur démarre et qu'une trame de requête est bien reçue et validée (si le fichier existe : vous utiliserez un fichier quelconque, par exemple un fichier texte créé avec le bloc note Windows) en créant et envoyant une requête avec Packetsender.
+
+Réponse simple
+Maintenant que le serveur démarre et reçoit des requêtes, vous aller traiter le cas où le fichier à envoyer fait moins de 512 octets et sera donc envoyé en un seul paquet. Dans tous les cas, la longueur exacte du fichier n'est pas connue a priori du serveur TFTP.
+
+Programmez la création du paquet à envoyer en créant un tableau d'octet contenant les informations TFTP (entête TFTP suivi des données à transmettre) qui seront insérée dans le paquet UDP.
+
+Programmez l'envoi de ce paquet et vérifiez le fonctionnement de votre serveur avec l'application Packetsender.
+
+Complétez votre programme pour qu'il attende l'acquittement du paquet envoyé avant de terminer les échanges et de fermer le serveur.
+
+Réponse à plusieurs clients
+Modifiez votre programme pour qu'il soit capable de servir plusieurs clients successifs : une fois que le transfert est terminé avec un client, le serveur se remet en attente d'une requête.
+
+Transfert d'un fichier en plusieurs parties
+Modifiez votre programme pour qu'il soit capable d'envoyer un fichier de plus de 512 octets en plusieurs paquets.
