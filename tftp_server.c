@@ -19,11 +19,11 @@
 #define ERROR 5
 
 int serv;         // Identifiant du socket serveur
-int iResult;      // Résultat des fonctions de la bibliothèque
-char Packet[taille];   // Tampon pour stocker les données reçues
-char Packet2[taille];   // Tampon pour stocker les données reçues du 2 eme client
-int len;          // Taille de la zone mémoire disponible pour l'adresse du client
-int bytesRead;    // Longueur des données contenues dans le datagramme reçu
+int iResult;      // RÃ©sultat des fonctions de la bibliothÃ¨que
+char Packet[taille];   // Tampon pour stocker les donnÃ©es reÃ§ues
+char Packet2[taille];   // Tampon pour stocker les donnÃ©es reÃ§ues du 2 eme client
+int len;          // Taille de la zone mÃ©moire disponible pour l'adresse du client
+int bytesRead;    // Longueur des donnÃ©es contenues dans le datagramme reÃ§u
 int bytesSent;
 int lastpac;
 
@@ -77,7 +77,7 @@ void tftp_server_run(void ){
     }
     else printf("Packet received ! \n");*/
 
-    if((RQT()==1) & (validateRQ()== TFTPSERV_OK))                  //pas d'erreur en reception de paquet et Request Validée
+    if((RQT()==1) & (validateRQ()== TFTPSERV_OK))                  //pas d'erreur en reception de paquet et Request ValidÃ©e
         printf("\n \t \t ***Packet received ! ****\n");
     else printf("Cannot unpack Packet\n");
 
@@ -114,8 +114,6 @@ int RQT(void){
     return 1;
 
 }
-
-//********> qu'est ce que le serveur recoit réellement apres  -i localhost GET test.txt ? Est ce qu'il recoit un code==1 pour dire RQR
 
 //creation du paquet acquitement
 
@@ -154,7 +152,7 @@ printf("op code is %d\n",opCode);
            | Opcode |  Filename  |   0  |    Mode    |   0  |
             ------------------------------------------------
     **/
-    case RQR:{                                 //puisque le client cherche à lire on récupère le nom du fichier pour lui transmettre ceci apres
+    case RQR:{                                 //puisque le client cherche Ã  lire on rÃ©cupÃ¨re le nom du fichier pour lui transmettre ceci apres
 
         while(Packet[i] != 0 ){
         filename[i-2]=Packet[i];
@@ -165,7 +163,7 @@ printf("op code is %d\n",opCode);
      /*   int j;
         printf("\n****filename*****\n");
         for(j=0;j<100;j++)
-            printf("%x\t",filename[j]);             // print du nom du file pour débogage
+            printf("%x\t",filename[j]);             // print du nom du file pour dÃ©bogage
         printf("\n");
         /**test end**/
 
@@ -186,7 +184,7 @@ printf("op code is %d\n",opCode);
     //    if(strcmp(mode,"octet")==0){
     //        printf("\n Octet mode \n");
     //    }
-    //    else return TFTPSERV_ERR;                         //*************************erreur liée au type return 9
+    //    else return TFTPSERV_ERR;                         //*************************erreur liÃ©e au type return 9
     //
     //
     //    /** testing the file : calling the testfile function **/
@@ -220,7 +218,7 @@ printf("op code is %d\n",opCode);
         return TFTPSERV_OK;                               // in case everything goes right with the RQR the function returns OK
         break;
         }
-        //printf("\n zmer makhrejch men switch \n");
+        
         }
 
     /**Trame DATA**/
@@ -262,9 +260,9 @@ printf("op code is %d\n",opCode);
     **/
     case ACK :{
 //To DO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        /*if(acquittement reçu ne correspond pas à celui attendu){
+        /*if(acquittement reÃ§u ne correspond pas Ã  celui attendu){
            printf("ACK as not Excpected ");
-           return TFTPSERV_ERR;                                     // if ack as not excpected the funct° returns ERR = 10
+           return TFTPSERV_ERR;                                     // if ack as not excpected the functÂ° returns ERR = 10
            break;}
         else {*/
             printf("\n \t \t !!!!!!!!!ACK Received!!!!!!!!\n");
@@ -283,7 +281,7 @@ printf("op code is %d\n",opCode);
     case ERROR :{
         printf("\n Error : TFTPSERV_ERR \n");
         exit(0);
-        return TFTPSERV_ERR;                                    //the client sends an error msg and the funct° returns ERR = 10
+        return TFTPSERV_ERR;                                    //the client sends an error msg and the functÂ° returns ERR = 10
         break;}
 
     default :{
